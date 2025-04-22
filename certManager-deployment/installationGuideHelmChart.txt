@@ -1,0 +1,16 @@
+# CertManager Installation Guide using Helm Chart
+
+1, make sure helm is install on the node
+
+2, add CertManager community  Helm Repo to local repo list
+
+    # helm repo add jetstack https://charts.jetstack.io --force-update
+
+3, install CertManager using helm repo
+
+    #  helm install \
+        cert-manager jetstack/cert-manager \
+        --namespace cert-manager \
+        --create-namespace \
+        --version v1.17.0 \
+        --set crds.enabled=true

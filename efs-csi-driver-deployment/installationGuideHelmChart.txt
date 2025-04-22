@@ -1,0 +1,12 @@
+Installation for Nfs CSI drive using Helm Chart
+
+1, make sure helm is installed on the cluster node
+
+2, add efs csi driver helm repo to local repo list
+
+    helm repo add aws-efs-csi-driver https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+
+3, install efi csi driver release
+
+    helm upgrade --install aws-efs-csi-driver --namespace kube-system aws-efs-csi-driver/aws-efs-csi-driver
+

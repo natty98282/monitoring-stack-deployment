@@ -1,0 +1,11 @@
+# create efs storage class
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: efs-sc-01
+provisioner: efs.csi.aws.com
+reclaimPolicy: Retain
+parameters:
+  provisioningMode: elastic
+  fileSystemId: fsmt-03728190eb38b6824
+  directoryPerms: "755"

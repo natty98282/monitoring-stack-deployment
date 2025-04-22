@@ -1,0 +1,15 @@
+# Nginx Ingress install using Helm Chart
+
+1, make sure helm is install on the cluster node
+
+2, add helm chard repo to local helm repo list
+
+    helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+    helm repo update
+
+3, install ingressNginx release on the cluster
+
+    # helm install etls-ingress ingress-nginx/ingress-nginx -n namespace
+
+4, check ingress Installation and ingress service load balancer IP
+

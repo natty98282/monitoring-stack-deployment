@@ -1,0 +1,11 @@
+Installation for Nfs CSI drive using Helm Chart
+
+1, make sure helm is installed on the cluster node
+
+2, add nfs csi driver helm repo to local repo list
+
+    helm repo add csi-driver-nfs https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+
+3, install nfs csi driver release
+
+    helm install helmetls-csi-driver-nfs csi-driver-nfs/csi-driver-nfs --version 4.11.0

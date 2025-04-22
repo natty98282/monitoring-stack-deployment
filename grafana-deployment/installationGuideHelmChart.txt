@@ -1,0 +1,36 @@
+# Grafana Installation Guide using Helm Chart
+
+1, make sure helm is install on the node
+
+2, add Grafana Helm Repo to local repo list
+
+    # helm repo add grafana https://grafana.github.io/helm-charts
+
+3, install grafana using helm repo
+
+    # helm install elst-grafana grafana/grafana --namespace elst-monitoring
+
+4, Enable persistent storage by changing grafana helm chart values
+
+    persistence:
+        type: pvc
+        enabled: true
+        # storageClassName: default
+
+5, enable ingress for secure connection
+
+    ingress:
+        enabled: true
+        ingressClassName: "nginx"
+
+        annotations: {}
+            # kubernetes.io/ingress.class: nginx
+            # kubernetes.io/tls-acme: "true"
+        labels: {}
+        path: /
+
+        # pathType is only for k8s >= 1.1=
+        pathType: Prefix
+
+        hosts:
+            - grafana.eaglelionsystems.com 

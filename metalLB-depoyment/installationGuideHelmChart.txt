@@ -1,0 +1,37 @@
+# Metal LB installation Guid using Official MetalLB helm Chart
+==========================================================================================
+1, insall Helm to utilize helm CLI
+
+2, add MetalLB Repo to helm repo list with the following Command
+
+    helm repo add metallb https://metallb.github.io/metallb
+
+    # check the repo is added using the ff Command
+
+    helm repo list
+
+3, create NameSpace for metallb (optional)
+    kubecl create ns metallb-system
+
+4, install MetalLB release on the cluster 
+
+    helm install etls-metallb metallb/metallb --version 0.14.9 -n metallb-system
+
+5, get the helm chart value to customize the installation according to the requirment
+
+    helm get values etls-metallb -n metallb-system
+
+6, apply the MetalLB custom resource configuration. For a Layer 2 setup:
+    kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.10/config/manifests/metallb-native.yaml
+
+7, create an IP Pool for metallb to assign to service automatically
+    kubeclt apply -f ipPool.yml
+
+8, install test service with LoadBalancer Type and check it metallb is working fine
+
+===========================================================================================
+
+
+
+
+

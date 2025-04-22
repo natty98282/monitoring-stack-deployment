@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: efs-test-pod
+spec:
+  containers:
+  - name: app
+    image: busybox
+    command: [ "sh", "-c", "while true; do echo 'Hello from EFS!' >> /data/out.txt; sleep 10; done" ]
+    volumeMounts:
+    - name: efs-volume
+      mountPath: /data
+  volumes:
+  - name: efs-volume
+    persistentVolumeClaim:
+      claimName: efs-claim
+  restartPolicy: Always
