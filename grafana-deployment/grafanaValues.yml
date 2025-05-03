@@ -229,7 +229,7 @@ gossipPortName: gossip
 ##
 service:
   enabled: true
-  type: ClusterIP
+  type: NodePort
   # Set the ip family policy to configure dual-stack see [Configure dual-stack](https://kubernetes.io/docs/concepts/services-networking/dual-stack/#services)
   ipFamilyPolicy: ""
   # Sets the families that should be supported and the order in which they should be applied to ClusterIP as well. Can be IPv4 and/or IPv6.
@@ -283,7 +283,8 @@ ingress:
   # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
   # ingressClassName: nginx
   # Values can be templated
-  annotations: {}
+  # annotations:
+    # cert-manager.io/cluster-issuer: "letsencrypt"
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   labels: {}
@@ -293,7 +294,7 @@ ingress:
   pathType: Prefix
 
   hosts:
-    - grafana.eaglelionsystems.com
+    - elstgrafana.eaglelionsystems.com
   ## Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
   extraPaths: []
   # - path: /*
@@ -309,11 +310,10 @@ ingress:
   #       port:
   #         name: use-annotation
 
-
-  tls:
-    - secretName: grafana-tls
-      hosts:
-        - grafana.eaglelionsystems.com
+  # tls:
+    # - secretName: elst-grafana-tls
+      # hosts:
+        # :q!- grafana.eaglelionsystems.com
 
 # -- BETA: Configure the gateway routes for the chart here.
 # More routes can be added by adding a dictionary key like the 'main' route.
@@ -869,6 +869,7 @@ grafana.ini:
     url: https://grafana.net
   server:
     domain: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ tpl (.Values.ingress.hosts | first) . }}{{ else }}''{{ end }}"
+  allow_embedding: true
 ## grafana Authentication can be enabled with the following values on grafana.ini
  # server:
       # The full public facing url you use in browser, used for redirects and emails
@@ -1582,8 +1583,7 @@ extraObjects: []
 # extraObjects:
 # - apiVersion: kubernetes-client.io/v1
 #   kind: ExternalSecret
-  metadata:
-    cert-manager.io/cluster-issuer: letsencrypt
+metadata:
 #     name: grafana-secrets-{{ .Release.Name }}
 #   spec:
 #     backendType: gcpSecretsManager

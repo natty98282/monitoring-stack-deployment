@@ -1,0 +1,16 @@
+# Wazuh Installation Guide using Helm Chart
+
+1, make sure helm is install on the node
+
+2, add Wazuh Helm Repo to local repo list
+
+    # helm repo add wazuh-helm https://promptlylabs.github.io/wazuh-helm-chart
+
+3, install Wazuh using helm repo
+
+    # helm install elst-wazuh wazuh-helm/wazuh -n elst-wazuh --values wazuhValues.yml
+
+4, Enable persistent storage by changing grafana helm chart values
+
+
+5, enable ingress for secure connection

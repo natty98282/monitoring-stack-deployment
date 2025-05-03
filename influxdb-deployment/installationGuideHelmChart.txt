@@ -8,7 +8,10 @@
 
 3, install grafana using helm repo
 
-    #  helm upgrade --install elst-influxdb influxdata/influxdb  -n elst-monitoring --values influxdbValues.yml
+    #  helm upgrade --install elst-influxdb influxdata/influxdb2  -n elst-monitoring --values influxdbValues.yml
+    # get password: echo $(kubectl get secret elst-influxdb-influxdb2-auth -o "jsonpath={.data['admin-password']}" --namespace elst-monitoring | base64 --decode)
+    admin pass: vcX4ouiiGhlC1pFIGpwDMNZpsSU2ppkI
+    token: P1IibqfxnHZN0W6oa8zBtsqsVlvYKLsbchKi6wRGpsEmxpdPnm52DdJBIkyKg7mkrOcuRmbi8gNPMJ5-ngJ8Uw==
 
 4, Enable persistent storage by changing grafana helm chart values
 

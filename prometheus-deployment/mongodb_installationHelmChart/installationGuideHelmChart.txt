@@ -1,0 +1,11 @@
+# installing Mongo on K8s Using helm chart
+
+1, make sure helm is install on the node or k8s jump server
+
+2, add the helm repo to local helm repo list
+
+    #  helm repo add bitnami https://charts.bitnami.com/bitnami
+
+3, install the chart using the follwing command
+
+    # helm install elst-mongo oci://registry-1.docker.io/bitnamicharts/mongodb
