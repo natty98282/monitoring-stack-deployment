@@ -393,7 +393,7 @@ server:
     ## Must be provided if Ingress is enabled
     ##
     hosts:
-       - elstprometheus.eaglelionsystems.com
+       - prometheus.example.com
     #   - domain.com/prometheus
 
     path: /

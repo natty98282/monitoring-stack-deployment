@@ -294,7 +294,7 @@ ingress:
   pathType: Prefix
 
   hosts:
-    - elstgrafana.eaglelionsystems.com
+    - grafana.example.com
   ## Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
   extraPaths: []
   # - path: /*
@@ -484,7 +484,7 @@ initChownData:
 
 # Administrator credentials when not using an existing secret (see below)
 adminUser: admin
-adminPassword: pVh6MDwWj-f}t]vL5"&Y%a
+adminPassword: "password"
 
 # Use an existing secret for the admin user.
 admin:

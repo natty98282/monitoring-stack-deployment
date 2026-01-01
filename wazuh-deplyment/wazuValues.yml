@@ -51,7 +51,7 @@ dashboard:
   cred:
     existingSecret: ""
     username: "kibanaserver"
-    password: "kibanaserver"
+    password: "password"
   
   config: |
     {{- include "wazuh.dashboard.config" . | indent 2 -}}
@@ -152,7 +152,7 @@ indexer:
   cred:
     existingSecret: ""
     username: "admin"
-    password: "SecretPassword"    
+    password: "password"    
 
 
 wazuh:
@@ -180,7 +180,7 @@ wazuh:
     existingSecret: ""
     username: "wazuh"
     # The password must have a length between 8 and 64 characters and contain at least one upper and lower case letter, a number, and a symbol(.*+?-).
-    password: "MyS3cr37P450r.*-"
+    password: "password"
   authd:
     existingSecret: ""
     pass: "password"
