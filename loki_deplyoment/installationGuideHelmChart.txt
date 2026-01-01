@@ -1,0 +1,12 @@
+# Loi Installation Guide using Helm Chart
+
+1, make sure helm is install on the node
+
+2, add Grafana Loki Helm Repo to local repo list
+
+    # helm repo add grafana https://grafana.github.io/helm-charts
+
+3, install Grafana Loki using helm repo
+
+    # helm install elst-loki grafana/loki ---values lokiValues.yml
+

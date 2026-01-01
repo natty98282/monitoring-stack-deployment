@@ -139,7 +139,7 @@ diagnosticMode:
 image:
   registry: docker.io
   repository: bitnami/mongodb
-  tag: 8.0.8-debian-12-r0
+  tag: 8.0.9-debian-12-r0
   digest: ""
   ## Specify a imagePullPolicy
   ## ref: https://kubernetes.io/docs/concepts/containers/images/#pre-pulled-images
@@ -2456,7 +2456,7 @@ metrics:
   collector:
     ## @param metrics.collector.all Enable all collectors. Same as enabling all individual metrics
     ## Enabling all metrics will cause significant CPU load on mongod
-    all: true
+    all: false
     ## @param metrics.collector.diagnosticdata Boolean Enable collecting metrics from getDiagnosticData
     diagnosticdata: true
     ## @param metrics.collector.replicasetstatus Boolean Enable collecting metrics from replSetGetStatus

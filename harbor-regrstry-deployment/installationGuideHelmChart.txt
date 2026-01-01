@@ -1,0 +1,30 @@
+# Harbor Installation Guide using Helm Chart
+
+1, make sure helm is install on the node
+
+2, add Harbor Helm Repo to local repo list
+
+    # helm repo add harbor https://helm.goharbor.io
+
+3, install Harbor using helm repo
+
+    # helm install elst-registry harbor/harbor -n elst-registry --values values.yml
+
+
+5, enable ingress for secure connection
+
+    ingress:
+        enabled: true
+        ingressClassName: "nginx"
+
+        annotations: {}
+            # kubernetes.io/ingress.class: nginx
+            # kubernetes.io/tls-acme: "true"
+        labels: {}
+        path: /
+
+        # pathType is only for k8s >= 1.1=
+        pathType: Prefix
+
+        hosts:
+            - elstregistry.eaglelionsystems.com 

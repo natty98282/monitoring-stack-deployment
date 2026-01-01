@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  cbevpn_blackbox_exporter:
+    image: prom/blackbox-exporter:latest
+    container_name: cbevpn_blackbox_exporter
+    restart: unless-stopped
+    ports:
+      - "9115:9115"
+    command:
+      - '--config.file=/etc/blackbox_exporter/blackbox.yml'
+    volumes:
+      - ./blackbox_config.yml:/etc/blackbox_exporter/blackbox.yml
